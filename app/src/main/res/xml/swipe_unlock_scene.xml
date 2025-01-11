@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <!-- Start Constraint -->
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/swipeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:translationX="0dp"/>
+    </ConstraintSet>
+
+    <!-- End Constraint (Button Fully Swiped) -->
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/swipeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:translationX="300dp"/>
+    </ConstraintSet>
+
+    <!-- Transition Definition -->
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="1000">
+        <OnSwipe
+            motion:touchAnchorId="@+id/swipeButton"
+            motion:touchAnchorSide="start"
+            motion:dragDirection="dragRight"/>
+    </Transition>
+</MotionScene>
