@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.quizaki_">
 
-<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,8 +16,11 @@
         android:theme="@style/Theme.Quizaki_"
         tools:targetApi="31">
         <activity
+            android:name=".otp_screen"
+            android:exported="false" />
+        <activity
             android:name=".splashScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,9 +35,11 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="false"></activity>
 
-        </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

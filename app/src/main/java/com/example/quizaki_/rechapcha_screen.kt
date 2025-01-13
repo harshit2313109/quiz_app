@@ -2,8 +2,6 @@ package com.example.quizaki_
 
 import android.os.Bundle
 import android.util.Log
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -16,8 +14,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.Response
 
 class rechapcha_screen : AppCompatActivity() {
@@ -42,7 +38,7 @@ class rechapcha_screen : AppCompatActivity() {
         }
 
         val safetyNetClient = SafetyNet.getClient(this)
-        val recaptchaButton = findViewById<Button>(R.id.recaptcha_button)
+        val recaptchaButton = findViewById<Button>(R.id.lets_go)
 
         // Call the verification API with Retrofit
        fun verifyTokenWithRetrofit(token: String) {

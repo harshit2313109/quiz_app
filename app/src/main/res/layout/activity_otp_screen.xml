@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layoutforrecaptcha"
+    android:id="@+id/otp_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".rechapcha_screen">
@@ -11,12 +11,12 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="51dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:titleTextColor="@android:color/white" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_height="44dp"
 
         android:layout_marginStart="44dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="216dp"
         android:fontFamily="@font/poppins_medium"
         android:gravity="left"
         android:text="Play now"
@@ -61,17 +61,17 @@
 
     <Button
         android:id="@+id/lets_go"
-        android:layout_width="326dp"
+        android:layout_width="295dp"
         android:layout_height="58dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="#FF4081"
         android:padding="12dp"
-        android:text="I am not a Robot"
+        android:text="Let's go"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernamehome" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
     <TextView
         android:id="@+id/textView"
@@ -111,19 +111,62 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="12dp"
         android:text="Email"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="238dp"
-        android:layout_height="189dp"
+        android:layout_width="249dp"
+        android:layout_height="159dp"
         android:layout_marginStart="80dp"
         app:layout_constraintBottom_toTopOf="@+id/tvWelcome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/home" />
+        app:srcCompat="@drawable/otp_screen" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:text="Remember me"
+        app:layout_constraintStart_toStartOf="@+id/otp"
+        app:layout_constraintTop_toBottomOf="@+id/otp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="  OTP"
+        app:layout_constraintStart_toStartOf="@+id/usernamehome"
+        app:layout_constraintTop_toBottomOf="@+id/usernamehome" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/otp"
+        android:layout_width="233dp"
+        android:layout_height="48dp"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="556dp"
+        app:endIconMode="password_toggle"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/otp_"
+            android:layout_width="228dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edittext_background"
+            android:hint="Otp here "
+            android:inputType="number"
+            android:padding="12dp"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
