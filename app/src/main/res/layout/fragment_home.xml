@@ -10,11 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
-            android:padding="7dp"
+            android:padding="9dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -29,6 +34,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_marginStart="10dp"
                 android:orientation="vertical"
                 android:paddingStart="8dp">
 
@@ -52,13 +58,204 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/hamburgerimg"
+                android:layout_marginStart="160dp"
                 android:padding="8dp"
-                android:layout_marginStart="200dp"
-                android:layout_marginEnd="40dp"/>
+                android:src="@drawable/hamburgerimg" />
 
         </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homerecyclerView1"
+            android:layout_width="310dp"
+            android:layout_height="146dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="60dp"
+            android:orientation="horizontal"
+
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:listitem="@layout/homerecyclerview1" />
+
+        <LinearLayout
+            android:id="@+id/categorylayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homerecyclerView1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Category"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/seeall1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="230dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="See all"
+                android:textColor="@color/pink"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="@+id/categorylayout"
+            app:layout_constraintTop_toBottomOf="@+id/categorylayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+
+                app:layout_constraintEnd_toEndOf="@+id/categorylayout"
+                app:layout_constraintHorizontal_bias="0.466"
+                app:layout_constraintStart_toStartOf="@+id/categorylayout"
+                app:layout_constraintTop_toBottomOf="@+id/categorylayout">
+
+                <Button
+                    android:id="@+id/pythonbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#B9B9B9"
+                    android:text="Python" />
+
+                <Button
+                    android:id="@+id/challengebutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#B9B9B9"
+                    android:text="Challenge" />
+
+                <Button
+                    android:id="@+id/datastructurebutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#B9B9B9"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Data Structure" />
+
+                <Button
+                    android:id="@+id/otherbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#B9B9B9"
+                    android:text="Others" />
+
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/popularquizLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Popular Quiz"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/seeall2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="200dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="See all"
+                android:textColor="@color/pink"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homerecyclerView2"
+            android:layout_width="307dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
+            android:orientation="horizontal"
+            tools:listitem="@layout/homerecyclerview2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@+id/popularquizLayout"
+            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintStart_toStartOf="@+id/popularquizLayout"
+            app:layout_constraintTop_toBottomOf="@+id/popularquizLayout" />
+
+        <LinearLayout
+            android:id="@+id/RecentlyplayedLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/popularquizLayout"
+            app:layout_constraintTop_toBottomOf="@+id/homerecyclerView2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:text="Recently Played"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/seeall3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="175dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="See all"
+                android:textColor="@color/pink"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homerecycler3"
+            android:layout_width="307dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/homerecyclerview3"
+            app:layout_constraintStart_toStartOf="@+id/RecentlyplayedLayout"
+            app:layout_constraintTop_toBottomOf="@+id/RecentlyplayedLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

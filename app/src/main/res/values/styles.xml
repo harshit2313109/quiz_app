@@ -1,0 +1,7 @@
+<resources>
+    <!-- Custom Toolbar Style -->
+    <style name="Quizes">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+</resources>

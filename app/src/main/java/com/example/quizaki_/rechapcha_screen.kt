@@ -26,16 +26,15 @@ class rechapcha_screen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        val toolbar: Toolbar = findViewById(R.id.toolbar_recaptcha_screen)
         setSupportActionBar(toolbar)
-
         // Enable the back button in the toolbar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         // Handle back button click
         toolbar.setNavigationOnClickListener {
             onBackPressed()// or use NavUtils.navigateUpFromSameTask(this) if using fragments
         }
+
 
         val safetyNetClient = SafetyNet.getClient(this)
         val recaptchaButton = findViewById<Button>(R.id.lets_go)

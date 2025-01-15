@@ -4,9 +4,12 @@
     android:icon="@drawable/nav1img"
         android:title="" />
     <item android:title=""
+        android:id="@+id/nav2"
         android:icon="@drawable/nav2img"/>
     <item android:title=""
+        android:id="@+id/nav3"
         android:icon="@drawable/nav3img"/>
     <item android:title=""
+        android:id="@+id/nav4"
         android:icon="@drawable/nav4img"/>
 </menu>

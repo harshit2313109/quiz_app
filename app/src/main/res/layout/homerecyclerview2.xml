@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="135dp"
+    android:layout_height="160dp"
+    android:orientation="vertical"
+    android:layout_margin="7dp"
+    android:background="@drawable/homerecyclerview2_edits">
+
+
+    <ImageView
+        android:id="@+id/imghomerv2"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/eventnamerv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name of the event "
+       android:fontFamily="sans-serif-black"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"/>
+</LinearLayout>
