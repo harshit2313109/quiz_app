@@ -52,4 +52,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.github.d-max:spots-dialog:0.7@arr")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+
 }
