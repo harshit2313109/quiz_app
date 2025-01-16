@@ -6,7 +6,8 @@
     android:id="@+id/otp_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".rechapcha_screen">
+    tools:context=".rechapcha_screen"
+    android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_otp_screen"
@@ -69,7 +70,6 @@
         android:text="Let's go"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 

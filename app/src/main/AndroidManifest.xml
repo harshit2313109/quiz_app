@@ -23,7 +23,7 @@
             android:exported="true" />
         <activity
             android:name=".otp_screen"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".rechapcha_screen"
             android:exported="true" />
