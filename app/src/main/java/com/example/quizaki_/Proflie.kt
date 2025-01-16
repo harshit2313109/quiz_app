@@ -16,4 +16,16 @@ class Proflie : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_proflie, container, false)
     }
+    //if in case no view to deliver.
+
+    //TextView emptyView = findViewById(R.id.empty_view);
+    //if (yourDataset.isEmpty()) {
+    //    emptyView.setVisibility(View.VISIBLE);
+    //    recyclerView.setVisibility(View.GONE);
+    //    recentlyPlayedLayout.setVisibility(View.GONE);
+    //} else {
+    //    emptyView.setVisibility(View.GONE);
+    //    recyclerView.setVisibility(View.VISIBLE);
+    //    recentlyPlayedLayout.setVisibility(View.VISIBLE);
+    //}
 }
