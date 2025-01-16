@@ -24,9 +24,13 @@
         app:titleTextAppearance="@style/Quizes"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="409dp"
-            android:layout_height="665dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="630dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            tools:listitem="@layout/quizesrecyclerview"
+            app:layout_constraintStart_toStartOf="@+id/toolbar_quizes"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_quizes" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

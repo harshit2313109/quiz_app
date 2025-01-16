@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Quizaki_"
         tools:targetApi="31">
         <activity
+            android:name=".Quiztemplate"
+            android:exported="true" />
+        <activity
             android:name=".navigationbaractivity"
             android:exported="true" />
         <activity
@@ -26,7 +29,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
