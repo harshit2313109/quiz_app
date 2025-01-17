@@ -11,6 +11,9 @@ activity = "1.9.3"
 constraintlayout = "2.2.0"
 playServicesBasement = "18.5.0"
 
+navigation = "2.7.2"
+
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -25,4 +28,7 @@ play-services-basement = { group = "com.google.android.gms", name = "play-servic
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+safe-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
+
 

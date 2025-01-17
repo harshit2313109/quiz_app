@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    alias(libs.plugins.safe.args)
+
 }
 
 android {
@@ -26,6 +29,10 @@ android {
             )
         }
     }
+    buildFeatures{
+        viewBinding=true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -54,5 +61,8 @@ dependencies {
     implementation("com.github.d-max:spots-dialog:0.7@arr")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
+    val nav_version = "2.8.5"
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
 
 }

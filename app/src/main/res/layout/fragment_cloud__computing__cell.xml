@@ -12,7 +12,6 @@
        <androidx.appcompat.widget.Toolbar
            android:id="@+id/toolbar_quizes"
            app:title="Cloud Computing Cell"
-           app:titleMarginStart="1dp"
            app:titleMarginTop="9dp"
            android:layout_width="match_parent"
            android:layout_height="?attr/actionBarSize"
@@ -31,9 +30,9 @@
            android:layout_marginStart="124dp"
            android:layout_marginTop="20dp"
            android:text="About Team"
-           android:textFontWeight="400"
            android:textSize="30dp"
            android:textStyle="bold"
+           android:textColor="@color/black"
            app:layout_constraintStart_toStartOf="@+id/toolbar_quizes"
            app:layout_constraintTop_toBottomOf="@+id/toolbar_quizes" />
 
@@ -41,13 +40,13 @@
            android:id="@+id/textView12"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginStart="4dp"
+           android:layout_marginStart="116dp"
            android:layout_marginTop="32dp"
            android:fontFamily="casual"
            android:text="Explore the website \n or click on the views below"
            android:textAlignment="center"
            android:textColor="@color/pink"
-           app:layout_constraintStart_toStartOf="@+id/textView10"
+           app:layout_constraintStart_toStartOf="@+id/toolbar_quizes"
            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
        <Button
@@ -58,7 +57,7 @@
            android:layout_marginTop="380dp"
            android:backgroundTint="@color/pink"
            android:text="Learn More"
-
+            android:textColor="@color/white"
            app:layout_constraintStart_toStartOf="@+id/toolbar_quizes"
            app:layout_constraintTop_toBottomOf="@+id/textView12" />
    </androidx.constraintlayout.widget.ConstraintLayout>
