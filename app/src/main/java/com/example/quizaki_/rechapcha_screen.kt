@@ -26,6 +26,7 @@ class rechapcha_screen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         val toolbar: Toolbar = findViewById(R.id.toolbar_recaptcha_screen)
         setSupportActionBar(toolbar)
         // Enable the back button in the toolbar
@@ -66,7 +67,7 @@ class rechapcha_screen : AppCompatActivity() {
         }
 
         recaptchaButton.setOnClickListener {
-            safetyNetClient.verifyWithRecaptcha("6LegmbMqAAAAAGXV60a22UsQk1E2NFrPMFH1jTaM")
+            safetyNetClient.verifyWithRecaptcha("AIzaSyABQ2otZSi4n4NQVSm9Uqj5dhsIwFcPqQA")
                 .addOnSuccessListener { response ->
                     val token = response.tokenResult
                     if (!token.isNullOrEmpty()) {
