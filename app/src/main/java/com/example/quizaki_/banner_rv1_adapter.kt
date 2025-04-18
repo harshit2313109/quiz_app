@@ -8,14 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class banner_rv_adapter(val bannerdata :ArrayList<banner_rv_dc>):RecyclerView.Adapter<banner_rv_adapter.ViewHolder>() {
-    class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
-        val image: ImageView = view.findViewById(R.id.imghomerv1)
-        val eventnamerv1_: TextView = view.findViewById(R.id.eventnamerv1)
-    }
+class banner_rv_adapter(val bannerdata : List<banner_rv_dc>):RecyclerView.Adapter<banner_rv_adapter.ViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_home, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.homerecyclerview1, parent, false)
         return ViewHolder(view)
     }
 
@@ -31,4 +28,9 @@ class banner_rv_adapter(val bannerdata :ArrayList<banner_rv_dc>):RecyclerView.Ad
             .placeholder(R.drawable.home) // Show a placeholder image
             .into(holder.image)
     }
+
+class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
+    val image: ImageView = view.findViewById(R.id.imghomerv1)
+    val eventnamerv1_: TextView = view.findViewById(R.id.eventnamerv1)
+}
 }
