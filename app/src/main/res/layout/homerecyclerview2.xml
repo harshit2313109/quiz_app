@@ -7,12 +7,14 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="25dp"
+    android:backgroundTint="@color/white"
     android:elevation="10dp">
 <LinearLayout
     android:layout_width="135dp"
     android:layout_height="160dp"
     android:orientation="vertical"
-    android:layout_margin="7dp">
+    android:layout_margin="7dp"
+    >
 
 
     <ImageView
@@ -26,7 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="name of the event "
+        android:textColor="@color/black"
+        android:layout_marginStart="8dp"
        android:fontFamily="sans-serif-black"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:textAlignment="center"/>
 </LinearLayout>

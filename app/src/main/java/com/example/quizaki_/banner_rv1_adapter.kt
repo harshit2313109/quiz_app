@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class banner_rv_adapter(val bannerdata : List<banner_rv_dc>):RecyclerView.Adapter<banner_rv_adapter.ViewHolder>() {
+class banner_rv1_adapter(val bannerdata : List<banner_rv1_dc>):RecyclerView.Adapter<banner_rv1_adapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,7 +22,7 @@ class banner_rv_adapter(val bannerdata : List<banner_rv_dc>):RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = bannerdata[position]
-        holder.eventnamerv1_.text = item.textView.toString()
+        holder.eventnamerv1_.text = item.textView
         Glide.with(holder.image.context) // Use Glide for image loading
             .load(item.imageUrl)
             .placeholder(R.drawable.home) // Show a placeholder image

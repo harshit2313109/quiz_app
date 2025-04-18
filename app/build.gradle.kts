@@ -1,12 +1,21 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-
     alias(libs.plugins.safe.args)
 
 }
 
+
+
 android {
+    packaging {
+        resources {
+            excludes += "META-INF/INDEX.LIST"
+            excludes += "META-INF/DEPENDENCIES"
+        }
+    }
+
     namespace = "com.example.quizaki_"
     compileSdk = 35
 
@@ -29,9 +38,7 @@ android {
             )
         }
     }
-    buildFeatures{
-        viewBinding=true
-    }
+
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -55,18 +62,22 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation ("com.google.android.gms:play-services-safetynet:17.0.0")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:2.1.0")
+
+    implementation ("com.google.android.recaptcha:recaptcha:18.7.0")
+
+    implementation ("com.google.android.gms:play-services-recaptcha:17.1.0")
+
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.github.d-max:spots-dialog:0.7@arr")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
-    val nav_version = "2.8.5"
-    implementation("androidx.navigation:navigation-fragment:$nav_version")
-    implementation("androidx.navigation:navigation-ui:$nav_version")
 
-    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+
+    implementation ("androidx.recyclerview:recyclerview:1.4.0")
+
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")

@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeToUnlockid"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <!-- Quiz Text -->
 
@@ -45,6 +46,7 @@
         android:layout_marginStart="52dp"
         android:text="An exciting and rewarding experience where "
         android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/quizText"
         app:layout_constraintTop_toBottomOf="@+id/quizText" />
 
@@ -54,19 +56,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="players can learn while playing"
+        android:textColor="@color/black"
+
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/lets_go"
+        android:id="@+id/get_started"
         android:layout_width="326dp"
         android:layout_height="58dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="#FF4081"
         android:padding="12dp"
         android:text="Get Started"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/quizText"
         app:layout_constraintStart_toStartOf="@+id/quizText"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
