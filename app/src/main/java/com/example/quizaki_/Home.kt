@@ -1,10 +1,12 @@
 package com.example.quizaki_
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
@@ -36,7 +38,11 @@ class Home : Fragment() {
         rv2.layoutManager= LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
         rv3.layoutManager= LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
 
-        rv1.adapter = banner_rv1_adapter(emptyList())
+        rv1.adapter = banner_rv1_adapter(emptyList(), object : banner_rv1_adapter.Itemclicklistener {
+            override fun onclickingitem(position: Int){
+                Toast.makeText(context, "Item $position clicked now emptyone", Toast.LENGTH_SHORT).show()
+            }
+        })
         rv2.adapter = banner_rv2_adapter(emptyList())
         rv3.adapter = banner_rv3_adapter(emptyList())
 
@@ -68,23 +74,45 @@ class Home : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val apiService = retrofit.create(api_interface::class.java)
+        val apiService = retrofit.create(home_rv_interface::class.java)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val items = apiService.getItems()
                 withContext(Dispatchers.Main) {
                     if (items.isNotEmpty()) {
-                        rv.adapter = banner_rv1_adapter(items)
+                        rv.adapter = banner_rv1_adapter(items, object : banner_rv1_adapter.Itemclicklistener {
+                            override fun onclickingitem(position: Int) {
+                                Toast.makeText(context, "Item $position clicked api ", Toast.LENGTH_SHORT).show()
+
+                                val intent = Intent (context,Quiztemplate::class.java)
+                                intent.putExtra("category", items[position].textView)
+                                startActivity(intent)
+
+                            }
+                        })
                     } else {
                         // Use dummy data if API returns no data
-                        rv.adapter = banner_rv1_adapter(getDummyData1())
+                        rv.adapter = banner_rv1_adapter(getDummyData1(),object : banner_rv1_adapter.Itemclicklistener {
+                            override fun onclickingitem(position: Int){
+                                val intent = Intent (context,Quiztemplate::class.java)
+                                intent.putExtra("category", items[position].textView)
+                                startActivity(intent)
+                            }
+                        })
                     }
                 }
             } catch (e: Exception) {
+               val dummydata1 = getDummyData1()
                 // Use dummy data in case of error
                 withContext(Dispatchers.Main) {
-                    rv.adapter = banner_rv1_adapter(getDummyData1())
+                    rv.adapter = banner_rv1_adapter(getDummyData1(),object : banner_rv1_adapter.Itemclicklistener {
+                        override fun onclickingitem(position: Int){
+                            val intent = Intent (context,Quiztemplate::class.java)
+                            intent.putExtra("category",dummydata1[position].textView )
+                            startActivity(intent)
+                        }
+                    })
                 }
             }
         }
@@ -108,7 +136,7 @@ class Home : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val apiService = retrofit.create(api_interface::class.java)
+        val apiService = retrofit.create(home_rv_interface::class.java)
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -138,7 +166,7 @@ class Home : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val apiService = retrofit.create(api_interface::class.java)
+        val apiService = retrofit.create(home_rv_interface::class.java)
 
 
         CoroutineScope(Dispatchers.IO).launch {
