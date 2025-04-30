@@ -43,7 +43,13 @@ class Home : Fragment() {
                 Toast.makeText(context, "Item $position clicked now emptyone", Toast.LENGTH_SHORT).show()
             }
         })
-        rv2.adapter = banner_rv2_adapter(emptyList())
+        rv2.adapter = banner_rv2_adapter(emptyList(),object : banner_rv2_adapter.ItemclickListener2 {
+            override fun onclickingitem2(position: Int){
+                Toast.makeText(context, "Item $position clicked now emptyone", Toast.LENGTH_SHORT).show()
+
+            }
+        })
+
         rv3.adapter = banner_rv3_adapter(emptyList())
 
         populateRecyclerView1(rv1)
@@ -124,8 +130,8 @@ class Home : Fragment() {
         return ArrayList(
             listOf(
                 banner_rv2_dc("Ruby", "https://media.istockphoto.com/id/182662385/photo/loose-ruby-stone.jpg?s=1024x1024&w=is&k=20&c=vdXrtAzBcl3bhAgvLCKA1clLqKig8E5Nl8fZw1OE0l4="),
-                banner_rv2_dc("Go", "https://plus.unsplash.com/premium_photo-1669075651762-59f2247ac733?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
-                banner_rv2_dc("JavaSript", "https://images.unsplash.com/photo-1667372393086-9d4001d51cf1?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+                banner_rv2_dc("GoLang", "https://plus.unsplash.com/premium_photo-1669075651762-59f2247ac733?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                banner_rv2_dc("JavaScript", "https://images.unsplash.com/photo-1667372393086-9d4001d51cf1?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
             )
         )
     }
@@ -143,16 +149,37 @@ class Home : Fragment() {
                 val items2 = apiService.getItems2()
                 withContext(Dispatchers.Main) {
                     if (items2.isNotEmpty()) {
-                        rv.adapter = banner_rv2_adapter(items2)
+                        rv.adapter = banner_rv2_adapter(items2,object : banner_rv2_adapter.ItemclickListener2 {
+                           override  fun onclickingitem2(position: Int) {
+                                Toast.makeText(context, "Item $position clicked api ", Toast.LENGTH_SHORT).show()
+
+                                val intent = Intent (context,Quiztemplate::class.java)
+                                intent.putExtra("category", items2[position].name)
+                                startActivity(intent)
+
+                            }
+                        })
                     } else {
                         // Use dummy data if API returns no data
-                        rv.adapter = banner_rv2_adapter(getDummyData2())
+                        rv.adapter = banner_rv2_adapter(getDummyData2(),object : banner_rv2_adapter.ItemclickListener2 {
+                            override fun onclickingitem2(position: Int){
+                                val intent = Intent (context,Quiztemplate::class.java)
+                                intent.putExtra("category", items2[position].name)
+                                startActivity(intent)
+                            }
+                        })
                     }
                 }
             } catch (e: Exception) {
                 // Use dummy data in case of error
                 withContext(Dispatchers.Main) {
-                    rv.adapter = banner_rv2_adapter(getDummyData2())
+                    rv.adapter = banner_rv2_adapter(getDummyData2(),object : banner_rv2_adapter.ItemclickListener2 {
+                        override fun onclickingitem2(position: Int){
+                            val intent = Intent (context,Quiztemplate::class.java)
+                            intent.putExtra("category",getDummyData2()[position].name )
+                            startActivity(intent)
+                        }
+                    })
                 }
             }
         }

@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.quizaki_.banner_rv1_adapter.ViewHolder
 
-class banner_rv2_adapter(var bannerRv2Dc: List<banner_rv2_dc>): RecyclerView.Adapter<banner_rv2_adapter.ViewHolder>() {
+class banner_rv2_adapter(var bannerRv2Dc: List<banner_rv2_dc>, val listener2 : ItemclickListener2): RecyclerView.Adapter<banner_rv2_adapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): banner_rv2_adapter.ViewHolder {
+
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.homerecyclerview2, parent, false)
         return ViewHolder(view)
     }
@@ -26,10 +28,20 @@ class banner_rv2_adapter(var bannerRv2Dc: List<banner_rv2_dc>): RecyclerView.Ada
             .load(item.imgurl)
             .placeholder(R.drawable.home) // Show a placeholder image
             .into(holder.image2)
+
+        holder.card.setOnClickListener {
+            listener2.onclickingitem2(position)
+        }
+
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image2: ImageView = view.findViewById(R.id.imghomerv2)
         val eventnamerv2: TextView = view.findViewById(R.id.eventnamerv2)
+        val card : View = view.findViewById(R.id.card_container)
+    }
+
+    interface ItemclickListener2{
+        fun onclickingitem2(position: Int)
     }
 }

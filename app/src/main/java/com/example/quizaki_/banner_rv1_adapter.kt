@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 
 class banner_rv1_adapter(val bannerdata : List<banner_rv1_dc>,val listener : Itemclicklistener ):RecyclerView.Adapter<banner_rv1_adapter.ViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.homerecyclerview1, parent, false)
         return ViewHolder(view)
@@ -36,6 +35,7 @@ class banner_rv1_adapter(val bannerdata : List<banner_rv1_dc>,val listener : Ite
 
         }
     }
+
 
 class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
     val image: ImageView = view.findViewById(R.id.imghomerv1)
