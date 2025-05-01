@@ -1,7 +1,9 @@
 package com.example.quizaki_
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -15,11 +17,17 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.collections.mutableListOf
+import kotlin.jvm.java
 
 class Quiztemplate : AppCompatActivity() {
 
     private var currentQuestionIndex = 0
     private var questionList: List<QuizQuestion_dc> = emptyList()
+    private var score = 0
+    val   selectedAnswers = mutableListOf<String>()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +38,6 @@ class Quiztemplate : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
 
 
         val category = intent.getStringExtra("category") ?: ""
@@ -67,7 +74,44 @@ class Quiztemplate : AppCompatActivity() {
             }
         }
     }
+
+
         fun showQuestion(q: QuizQuestion_dc) {
+
+
+            selectedAnswers.clear()
+
+            val optionViews = listOf(
+                findViewById<LinearLayout>(R.id.option1),
+                findViewById<LinearLayout>(R.id.option2),
+                findViewById<LinearLayout>(R.id.option3),
+                findViewById<LinearLayout>(R.id.option4)
+            )
+
+            for ((i, optionView) in optionViews.withIndex()) {
+                optionView.setBackgroundResource(R.drawable.nav_bg)
+
+                optionView.setOnClickListener {
+                    val optionText = q.options[i]
+                    if (selectedAnswers.contains(optionText)) {
+                        selectedAnswers.remove(optionText)
+                    } else {
+                        selectedAnswers.add(optionText)
+                    }
+
+                    // Refresh all option backgrounds based on selection
+                    for ((j, view) in optionViews.withIndex()) {
+                        val text = q.options[j]
+                        if (selectedAnswers.contains(text)) {
+                            view.setBackgroundResource(R.drawable.edittext_background)
+                        } else {
+                            view.setBackgroundResource(R.drawable.nav_bg)
+                        }
+                    }
+                }
+            }
+
+
             findViewById<TextView>(R.id.Questionhere).text = q.question
             findViewById<TextView>(R.id.optionA).text = q.options[0]
             findViewById<TextView>(R.id.optionB).text = q.options[1]
@@ -75,12 +119,36 @@ class Quiztemplate : AppCompatActivity() {
             findViewById<TextView>(R.id.optionD).text = q.options[3]
 
             findViewById<TextView>(R.id.questionnum).text = "${currentQuestionIndex + 1}"
-            findViewById<Button>(R.id.nextques_button).setOnClickListener {
+
+
+
+            val nextbtn : Button = findViewById(R.id.nextques_button)
+            if (currentQuestionIndex == questionList.size - 1) {
+                nextbtn.text = "Submit"
+            } else {
+                nextbtn.text = "Next"
+            }
+           nextbtn.setOnClickListener {
+                if (selectedAnswers.isEmpty()) {
+                    Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                if (selectedAnswers.toSet() == q.correctans.toSet()) {
+                    score++
+                }
+
+
                 if (currentQuestionIndex < questionList.size - 1) {
                     currentQuestionIndex++
                     showQuestion(questionList[currentQuestionIndex])
-                } else {
+                }
+                else {
                     Toast.makeText(this, "Quiz finished!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this,success_page::class.java)
+                    intent.putExtra("score", score)
+                    startActivity(intent)
+                    finish()
                 }
             }
             val progressBar = findViewById<ProgressBar>(R.id.progressBar4)
@@ -113,31 +181,31 @@ class Quiztemplate : AppCompatActivity() {
                 QuizQuestion_dc(
                     "Python",
                     "What is Python?",
-                    "Language",
+                    listOf("Language",),
                     listOf("Language", "Snake", "IDE", "Compiler")
                 ),
                 QuizQuestion_dc(
                     "Python",
                     "Who developed Python?",
-                    "Guido van Rossum",
+                    listOf("Guido van Rossum"),
                     listOf("Guido van Rossum", "James Gosling", "Linus Torvalds", "Dennis Ritchie")
                 ),
                 QuizQuestion_dc(
                     "Python",
                     "Which keyword is used to define a function?",
-                    "def",
+                    listOf("def"),
                     listOf("def", "function", "define", "func")
                 ),
                 QuizQuestion_dc(
                     "Python",
                     "Which data type is immutable?",
-                    "Tuple",
+                    listOf("Tuple"),
                     listOf("Tuple", "List", "Set", "Dictionary")
                 ),
                 QuizQuestion_dc(
                     "Python",
                     "What does PEP stand for?",
-                    "Python Enhancement Proposal",
+                    listOf("Python Enhancement Proposal"),
                     listOf(
                         "Python Enhancement Proposal",
                         "Python Enterprise Program",
@@ -150,31 +218,31 @@ class Quiztemplate : AppCompatActivity() {
                 QuizQuestion_dc(
                     "Java",
                     "What is JVM?",
-                    "Java Virtual Machine",
+                    listOf("Java Virtual Machine"),
                     listOf("Java Virtual Machine", "Java Volume Manager", "Joint VM", "None")
                 ),
                 QuizQuestion_dc(
                     "Java",
                     "Which company owns Java?",
-                    "Oracle",
+                    listOf("Oracle"),
                     listOf("Oracle", "Google", "Microsoft", "IBM")
                 ),
                 QuizQuestion_dc(
                     "Java",
                     "Which keyword is used to inherit a class?",
-                    "extends",
+                    listOf("extends"),
                     listOf("extends", "inherits", "super", "instanceof")
                 ),
                 QuizQuestion_dc(
                     "Java",
                     "What is bytecode?",
-                    "Intermediate code",
+                    listOf("Intermediate code"),
                     listOf("Intermediate code", "Binary code", "Native code", "None")
                 ),
                 QuizQuestion_dc(
                     "Java",
                     "Which method is the entry point in Java?",
-                    "main()",
+                    listOf( "main()"),
                     listOf("main()", "start()", "run()", "init()")
                 ),
 
@@ -182,31 +250,31 @@ class Quiztemplate : AppCompatActivity() {
                 QuizQuestion_dc(
                     "C++",
                     "What is C++?",
-                    "Programming Language",
+                    listOf("Programming Language"),
                     listOf("Programming Language", "Game", "IDE", "Framework")
                 ),
                 QuizQuestion_dc(
                     "C++",
                     "Who created C++?",
-                    "Bjarne Stroustrup",
+                    listOf("Bjarne Stroustrup"),
                     listOf("Bjarne Stroustrup", "Guido Rossum", "James Gosling", "Ken Thompson")
                 ),
                 QuizQuestion_dc(
                     "C++",
                     "Which symbol is used for scope resolution?",
-                    "::",
+                    listOf("::"),
                     listOf("::", ".", "->", "#")
                 ),
                 QuizQuestion_dc(
                     "C++",
                     "Which concept supports function overloading?",
-                    "Polymorphism",
+                    listOf("Polymorphism"),
                     listOf("Polymorphism", "Abstraction", "Encapsulation", "Inheritance")
                 ),
                 QuizQuestion_dc(
                     "C++",
                     "Which of the following is not a C++ keyword?",
-                    "function",
+                    listOf("function"),
                     listOf("function", "class", "namespace", "template")
                 ),
 
@@ -214,31 +282,31 @@ class Quiztemplate : AppCompatActivity() {
                 QuizQuestion_dc(
                     "Ruby",
                     "What type of language is Ruby?",
-                    "Interpreted",
+                    listOf("Interpreted"),
                     listOf("Interpreted", "Compiled", "Bytecode", "Hybrid")
                 ),
                 QuizQuestion_dc(
                     "Ruby",
                     "Who created Ruby?",
-                    "Yukihiro Matsumoto",
+                    listOf("Yukihiro Matsumoto"),
                     listOf("Yukihiro Matsumoto", "Brendan Eich", "Dennis Ritchie", "James Gosling")
                 ),
                 QuizQuestion_dc(
                     "Ruby",
                     "What symbol starts a variable in Ruby?",
-                    "@",
+                    listOf("@"),
                     listOf("@", "$", "#", "&")
                 ),
                 QuizQuestion_dc(
                     "Ruby",
                     "Which framework is Ruby famous for?",
-                    "Rails",
+                    listOf("Rails"),
                     listOf("Rails", "Spring", "Django", "React")
                 ),
                 QuizQuestion_dc(
                     "Ruby",
                     "What is used to define a method?",
-                    "def",
+                    listOf("def"),
                     listOf("def", "function", "method", "fun")
                 ),
 
@@ -246,31 +314,31 @@ class Quiztemplate : AppCompatActivity() {
                 QuizQuestion_dc(
                     "GoLang",
                     "Who developed Go?",
-                    "Google",
+                    listOf("Google"),
                     listOf("Google", "Microsoft", "Oracle", "Facebook")
                 ),
                 QuizQuestion_dc(
                     "GoLang",
                     "What is the file extension for Go files?",
-                    ".go",
+                    listOf(".go"),
                     listOf(".go", ".golang", ".g", ".gl")
                 ),
                 QuizQuestion_dc(
                     "GoLang",
                     "Which keyword declares a variable?",
-                    "var",
+                    listOf("var"),
                     listOf("var", "int", "let", "define")
                 ),
                 QuizQuestion_dc(
                     "GoLang",
                     "What is Go known for?",
-                    "Concurrency",
+                    listOf("Concurrency"),
                     listOf("Concurrency", "OOP", "Scripting", "Web Design")
                 ),
                 QuizQuestion_dc(
                     "GoLang",
                     "Does Go support garbage collection?",
-                    "Yes",
+                    listOf("Yes"),
                     listOf("Yes", "No", "Partially", "Only in Linux")
                 ),
 
@@ -278,31 +346,31 @@ class Quiztemplate : AppCompatActivity() {
                 QuizQuestion_dc(
                     "JavaScript",
                     "Where does JavaScript run?",
-                    "Browser",
+                    listOf("Browser"),
                     listOf("Browser", "Compiler", "Editor", "Terminal")
                 ),
                 QuizQuestion_dc(
                     "JavaScript",
                     "What is '===' in JavaScript?",
-                    "Strict equality",
+                    listOf("Strict equality"),
                     listOf("Strict equality", "Assignment", "Comparison", "Function call")
                 ),
                 QuizQuestion_dc(
                     "JavaScript",
                     "Which type is not in JS?",
-                    "Integer",
+                    listOf("Integer"),
                     listOf("Integer", "Number", "Boolean", "String")
                 ),
                 QuizQuestion_dc(
                     "JavaScript",
                     "Which company developed JavaScript?",
-                    "Netscape",
+                    listOf( "Netscape"),
                     listOf("Netscape", "Microsoft", "Apple", "Google")
                 ),
                 QuizQuestion_dc(
                     "JavaScript",
                     "Which method converts JSON to an object?",
-                    "JSON.parse()",
+                    listOf("JSON.parse()"),
                     listOf("JSON.parse()", "JSON.stringify()", "parseJSON()", "objectify()")
                 )
             )
