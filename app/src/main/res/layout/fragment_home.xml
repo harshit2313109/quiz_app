@@ -15,7 +15,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:orientation="horizontal"
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:text="Welcome Back"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/nametexxtview"
@@ -66,14 +66,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homerecyclerView1"
-            android:layout_width="310dp"
-            android:layout_height="146dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="60dp"
             android:orientation="horizontal"
 
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.263"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:listitem="@layout/homerecyclerview1" />
 
@@ -81,11 +82,9 @@
             android:id="@+id/categorylayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/homerecyclerView1"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="@+id/homerecyclerView1"
+            app:layout_constraintTop_toBottomOf="@+id/homerecyclerView1">
 
             <TextView
                 android:id="@+id/categoryTitle"
@@ -95,21 +94,26 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:layout_marginStart="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/seeall1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:text="See all"
                 android:textColor="@color/pink"
                 android:textSize="18sp"
                 android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@id/categoryTitle"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.953"
+                app:layout_constraintStart_toEndOf="@+id/categoryTitle"
                 app:layout_constraintTop_toTopOf="@id/categoryTitle"
-                app:layout_constraintBottom_toBottomOf="@id/categoryTitle" />
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -117,14 +121,14 @@
             android:id="@+id/horizontalScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
             android:fillViewport="true"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="12dp"
+            android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/categorylayout">
 
             <LinearLayout
@@ -138,8 +142,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:backgroundTint="#B9B9B9"
-                    android:textColor="@color/white"
-                    android:text="Python" />
+                    android:text="Python"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/challengebutton"
@@ -147,8 +151,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:backgroundTint="#B9B9B9"
-                    android:textColor="@color/white"
-                    android:text="Challenge" />
+                    android:text="Challenge"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/datastructurebutton"
@@ -156,16 +160,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:backgroundTint="#B9B9B9"
-                    android:textColor="@color/white"
-                    android:text="Data Structure" />
+                    android:text="Data Structure"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/otherbutton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#B9B9B9"
-                    android:textColor="@color/white"
-                    android:text="Others" />
+                    android:text="Others"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -173,63 +177,61 @@
             android:id="@+id/popularquizLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-            app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView">
+            app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
 
             <TextView
                 android:id="@+id/popularTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Popular Quiz"
+                android:layout_marginStart="22dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/seeall2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:text="See all"
                 android:textColor="@color/pink"
                 android:textSize="18sp"
-                android:clickable="true"
-                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@id/popularTitle"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/popularTitle"
                 app:layout_constraintTop_toTopOf="@id/popularTitle"
-                app:layout_constraintBottom_toBottomOf="@id/popularTitle" />
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homerecyclerView2"
-            android:layout_width="307dp"
-            android:layout_height="160dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="50dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@+id/popularquizLayout"
-            app:layout_constraintHorizontal_bias="0.722"
-            app:layout_constraintStart_toStartOf="@+id/popularquizLayout"
+            app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
             app:layout_constraintTop_toBottomOf="@+id/popularquizLayout"
             tools:listitem="@layout/homerecyclerview2" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/RecentlyplayedLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/homerecyclerView2"
-            app:layout_constraintStart_toStartOf="@+id/popularquizLayout">
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/homerecyclerView2"
+            app:layout_constraintTop_toBottomOf="@+id/homerecyclerView2">
 
             <TextView
                 android:id="@+id/recentlyPlayedTitle"
@@ -239,48 +241,54 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:layout_marginStart="22dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/seeall3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:text="See all"
                 android:textColor="@color/pink"
                 android:textSize="18sp"
-                android:clickable="true"
-                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@id/recentlyPlayedTitle"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/recentlyPlayedTitle"
                 app:layout_constraintTop_toTopOf="@id/recentlyPlayedTitle"
-                app:layout_constraintBottom_toBottomOf="@id/recentlyPlayedTitle" />
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/homerecycler3"
-            android:layout_width="307dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
-            android:scrollbars="vertical"
-            app:layout_constraintStart_toStartOf="@+id/RecentlyplayedLayout"
-            app:layout_constraintTop_toBottomOf="@+id/RecentlyplayedLayout"
-            tools:listitem="@layout/homerecyclerview3" />
-
-        <include
-            android:id="@+id/emptyPlaceholder"
-            layout="@layout/empty_state_placeholder"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/recentlyPlayedWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintTop_toTopOf="@id/homerecycler3"
-            app:layout_constraintBottom_toBottomOf="@id/homerecycler3"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/RecentlyplayedLayout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homerecycler3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/homerecyclerview3" />
 
+            <include
+                android:id="@+id/emptyPlaceholder"
+                layout="@layout/empty_state_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

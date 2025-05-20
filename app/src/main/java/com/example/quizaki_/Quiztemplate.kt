@@ -3,6 +3,7 @@ package com.example.quizaki_
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -122,12 +123,8 @@ class Quiztemplate : AppCompatActivity() {
 
 
 
-            val nextbtn : Button = findViewById(R.id.nextques_button)
-            if (currentQuestionIndex == questionList.size - 1) {
-                nextbtn.text = "Submit"
-            } else {
-                nextbtn.text = "Next"
-            }
+            val nextbtn : ImageView = findViewById(R.id.nextques_button)
+
            nextbtn.setOnClickListener {
                 if (selectedAnswers.isEmpty()) {
                     Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show()
@@ -210,8 +207,7 @@ class Quiztemplate : AppCompatActivity() {
                         "Python Enhancement Proposal",
                         "Python Enterprise Program",
                         "Programming Easy Python",
-                        "None of the above"
-                    )
+                        "None of the above")
                 ),
 
                 // --- Java ---
